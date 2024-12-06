@@ -1,0 +1,43 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="New Workout" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <ActivityIndicator busy="{{ loading }}" class="m-4"/>
+            
+            <StackLayout class="form" visibility="{{ loading ? 'collapse' : 'visible' }}">
+                <Label text="Workout Type" class="font-bold mb-2"/>
+                <ListPicker items="{{ workoutTypes }}" selectedIndex="{{ selectedWorkoutType }}" 
+                           class="mb-4 p-2 border rounded"/>
+
+                <Label text="Duration (minutes)" class="font-bold mb-2"/>
+                <TextField text="{{ duration }}" keyboardType="number" 
+                          class="mb-4 p-2 border rounded"/>
+
+                <Label text="Intensity" class="font-bold mb-2"/>
+                <SegmentedBar items="{{ intensityOptions }}" selectedIndex="{{ selectedIntensity }}"
+                             class="mb-4"/>
+
+                <Label text="Exercises" class="font-bold mb-2"/>
+                <ListView items="{{ selectedExercises }}" class="mb-4" height="200">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-2">
+                            <StackLayout col="0">
+                                <Label text="{{ name }}" class="font-bold"/>
+                                <Label text="{{ category }}" class="text-sm text-gray-600"/>
+                            </StackLayout>
+                            <Button text="×" tap="{{ $parent.onRemoveExercise }}" 
+                                    col="1" class="text-red-500"/>
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Button text="Add Exercise" tap="{{ onAddExercise }}" 
+                        class="btn btn-outline mb-4"/>
+
+                <Button text="Start Workout" tap="{{ onStartWorkout }}" 
+                        class="btn btn-primary"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

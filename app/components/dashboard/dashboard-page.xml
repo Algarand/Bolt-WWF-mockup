@@ -1,0 +1,36 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Fitness Dashboard" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <GridLayout rows="auto, auto" columns="*, *" class="mb-4">
+                <StackLayout row="0" col="0" class="p-2 m-1 bg-blue-100 rounded">
+                    <Label text="Today's Stats" class="font-bold text-lg"/>
+                    <Label text="{{ todayCalories }}" class="text-2xl"/>
+                    <Label text="calories burned" class="text-sm"/>
+                </StackLayout>
+                
+                <StackLayout row="0" col="1" class="p-2 m-1 bg-green-100 rounded">
+                    <Label text="Workouts" class="font-bold text-lg"/>
+                    <Label text="{{ weeklyWorkouts }}" class="text-2xl"/>
+                    <Label text="this week" class="text-sm"/>
+                </StackLayout>
+            </GridLayout>
+
+            <StackLayout class="bg-white p-4 rounded-lg shadow">
+                <Label text="Recent Activities" class="text-xl font-bold mb-2"/>
+                <ListView items="{{ recentWorkouts }}" class="list-group">
+                    <ListView.itemTemplate>
+                        <StackLayout class="list-group-item">
+                            <Label text="{{ type }}" class="font-bold"/>
+                            <Label text="{{ duration }} minutes"/>
+                            <Label text="{{ calories }} calories"/>
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <Button text="Start New Workout" tap="{{ onStartWorkout }}" class="btn btn-primary mt-4"/>
+        </StackLayout>
+    </ScrollView>
+</Page>

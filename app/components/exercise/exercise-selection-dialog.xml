@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" shownModally="onShownModally">
+    <GridLayout rows="auto, *, auto" class="p-4">
+        <GridLayout row="0" columns="*, auto" class="mb-4">
+            <SearchBar col="0" hint="Search exercises..." text="{{ searchQuery }}" 
+                      submit="{{ onSearch }}" clear="{{ onClearSearch }}" />
+            <Button col="1" text="Cancel" tap="{{ close }}" class="ml-2" />
+        </GridLayout>
+
+        <ListView row="1" items="{{ exercises }}" itemTap="{{ onExerciseSelect }}" class="mb-4">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" class="p-2">
+                    <StackLayout col="0">
+                        <Label text="{{ name }}" class="font-bold"/>
+                        <Label text="{{ category }}" class="text-sm text-gray-600"/>
+                        <Label text="{{ difficulty }}" class="text-xs text-gray-500"/>
+                    </StackLayout>
+                    <Label col="1" text="{{ selected ? '✓' : '' }}" 
+                           class="text-green-500 font-bold"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <Button row="2" text="Add Selected" tap="{{ onConfirm }}" 
+                class="btn btn-primary" isEnabled="{{ hasSelection }}"/>
+    </GridLayout>
+</Page>

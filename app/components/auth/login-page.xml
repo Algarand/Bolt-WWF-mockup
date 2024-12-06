@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="WellWiseFit Login" />
+    
+    <StackLayout class="p-4">
+        <Image src="~/assets/logo.png" class="h-32 w-32 mb-8 self-center" />
+        
+        <StackLayout class="form">
+            <Label text="Email" class="font-bold mb-2" />
+            <TextField text="{{ email }}" keyboardType="email" 
+                      autocorrect="false" autocapitalizationType="none"
+                      class="mb-4 p-2 border rounded" />
+            
+            <Label text="Password" class="font-bold mb-2" />
+            <TextField text="{{ password }}" secure="true"
+                      class="mb-6 p-2 border rounded" />
+            
+            <Button text="Login" tap="{{ onLogin }}" 
+                    class="btn btn-primary mb-4" />
+            
+            <Button text="Sign Up" tap="{{ onSignUp }}" 
+                    class="btn btn-outline" />
+            
+            <ActivityIndicator busy="{{ loading }}" class="m-4" />
+        </StackLayout>
+        
+        <Label text="{{ errorMessage }}" 
+               class="text-red-500 text-center" 
+               visibility="{{ errorMessage ? 'visible' : 'collapsed' }}" />
+    </StackLayout>
+</Page>

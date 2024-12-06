@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="WellWiseFit" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Welcome to WellWiseFit" class="text-2xl font-bold text-center mb-4" />
+            <Label text="Your personal fitness companion" class="text-lg text-center text-gray-500 mb-8" />
+            
+            <Button text="Start Workout" tap="{{ onStartWorkout }}" class="btn btn-primary mb-4" />
+            <Button text="View Progress" tap="{{ onViewProgress }}" class="btn btn-outline mb-4" />
+            <Button text="Exercise Library" tap="{{ onExerciseLibrary }}" class="btn btn-outline mb-4" />
+            
+            <Label text="Today's Stats" class="text-xl font-bold mt-8 mb-4" />
+            <GridLayout rows="auto" columns="*, *" class="mb-4">
+                <StackLayout col="0" class="text-center p-4 bg-blue-100 rounded m-1">
+                    <Label text="0" class="text-2xl font-bold" />
+                    <Label text="Workouts" class="text-sm" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center p-4 bg-green-100 rounded m-1">
+                    <Label text="0" class="text-2xl font-bold" />
+                    <Label text="Calories" class="text-sm" />
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
